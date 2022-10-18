@@ -1,20 +1,20 @@
 <?php
 
-class Countries extends Controller
+class RichestPeoples extends Controller
 {
     // properties
-    private $countryModel;
+    private $richModel;
 
     // Dit is de constructor van de cotnroller
     public function __construct()
     {
-        $this->countryModel = $this->model('Country');
+        $this->richModel = $this->model('RichestPeople');
     }
 
 
-    public function index($land = 'Nederland', $age = '67')
+    public function index($name = 'Elon Musk', $age = '50')
     {
-        $records = $this->countryModel->getCountries();
+        $records = $this->richModel->getPeople();
         // var_dump($records);
 
         $rows = '';
@@ -23,25 +23,25 @@ class Countries extends Controller
             $rows .= "<tr>
                             <td>$items->id</td>
                             <td>$items->Name</td>
-                            <td>$items->CapitalCity</td>
-                            <td>$items->Continent</td>
-                            <td>$items->Population</td>
+                            <td>$items->Networth</td>
+                            <td>$items->MyAge</td>
+                            <td>$items->Company</td>
                             <td>
-                            <a href='" . URLROOT . "/countries/update/$items->id'>update</a>
+                            <a href='" . URLROOT . "/RichestPeoples/update/$items->id'>update</a>
                             </td>
                             <td>
-                            <a href='" . URLROOT . "/countries/delete/$items->id'>delete</a>
+                            <a href='" . URLROOT . "/RichestPeoples/delete/$items->id'>delete</a>
                             </td>
                             
                             </tr>";
         }
 
         $data = [
-            'title' => "Overzicht landen",
+            'title' => "Overzicht rijke mensen",
             'rows' => $rows
         ];
 
-        $this->view('countries/index', $data);
+        $this->view('RichestPeoples/index', $data);
     }
 
     public function  update($id = null)
@@ -55,30 +55,30 @@ class Countries extends Controller
              */
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $this->countryModel->updateCountry($_POST);
+            $this->richModel->updatePeople($_POST);
 
-            header("Location: " . URLROOT . "/country/index");
+            header("Location: " . URLROOT . "/RichestPeople/index");
         }
-        $record = $this->countryModel->getCountry($id);
+        $record = $this->richModel->getPeople($id);
         var_dump($record);
         $data = [
             'title' => 'Update Landen',
             'id' => $record->id,
             'Name' => $record->Name,
-            'CapitalCity' => $record->CapitalCity,
-            'Continent' => $record->Continent,
-            'Population' => $record->Population
+            'Networth' => $record->Networth,
+            'MyAge' => $record->MyAge,
+            'Company' => $record->Company
         ];
-        $this->view('countries/update', $data);
+        $this->view('RichestPeoples/update', $data);
     }
 
     public function delete($id)
     {
-        $result = $this->countryModel->deleteCountry($id);
+        $result = $this->richModel->deletePeople($id);
         var_dump($result);
         if ($result) {
             echo "Het record is verwijderd uit de database";
-            header("Refresh: 3; URL=" . URLROOT . "/countries/index");
+            header("Refresh: 3; URL=" . URLROOT . "/RichestPeoples/index");
         } else {
             echo "Internal server-error, het record is niet verwijderd.";
         }
@@ -90,19 +90,19 @@ class Countries extends Controller
             // $_POST array schoonmaken
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $result = $this->countryModel->createCountry($_POST);
+            $result = $this->richModel->createPeople($_POST);
 
             if ($result) {
-                echo "Het invoeren in gelukt!";
-                header("Refresh:3; URL=" . URLROOT . "/countries/index");
+                echo "Het invoeren is gelukt!";
+                header("Refresh:3; URL=" . URLROOT . "/RichestPeoples/index");
             } else {
                 echo "Het invoeren is niet gelukt";
-                header("Refresh:3; URL=" . URLROOT . "/countries/index");
+                header("Refresh:3; URL=" . URLROOT . "/RichestPeoples/index");
             }
         }
         $data = [
-            'title' => 'Voeg een nieuw land toe'
+            'title' => 'Voeg een nieuw persoon toe'
         ];
-        $this->view('countries/create', $data);
+        $this->view('RichestPeoples/create', $data);
     }
 }
