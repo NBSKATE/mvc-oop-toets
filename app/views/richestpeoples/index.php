@@ -1,6 +1,6 @@
 <h1><?= $data['title'] ?> <br></h1>
 
-<a href="<?= URLROOT ?>/Countries/create">Nieuwe record</a>
+<a href="<?= URLROOT ?>/RichestPeoples/create">Nieuwe record</a>
 <table>
     <thead>
         <th>id</th>

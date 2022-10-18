@@ -12,9 +12,9 @@ class RichestPeoples extends Controller
     }
 
 
-    public function index($name = 'Elon Musk', $age = '50')
+    public function index($land = 'Elon Musk', $age = '50')
     {
-        $records = $this->richModel->getPeople();
+        $records = $this->richModel->getPeoples();
         // var_dump($records);
 
         $rows = '';

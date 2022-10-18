@@ -7,6 +7,6 @@ define('DB_NAME', 'mvc-oop-toets');
 
 define('APPROOT', dirname(dirname(__FILE__)));
 
-define('URLROOT', 'mvc-oop-toets.com');
+define('URLROOT', 'http://mvc-oop-toets.com');
 
 define('SITENAME', 'mvc-oop-toets');
