@@ -8,15 +8,15 @@
                 <td><input type="text" name="name" id="name" value="<?= $data['Name']; ?>"></td>
             </tr>
             <tr>
-                <td>Hoofdstad:</td>
+                <td>Vermogen:</td>
                 <td><input type="text" name="networth" id="Networth" value="<?= $data['Networth']; ?>"></td>
             </tr>
             <tr>
-                <td>Continent:</td>
+                <td>Leeftijd:</td>
                 <td><input type="text" name="myAge" id="MyAge" value="<?= $data['MyAge']; ?>"></td>
             </tr>
             <tr>
-                <td>Population:</td>
+                <td>Bedrijf:</td>
                 <td><input type="text" name="company" id="Company" value="<?= $data['Company']; ?>"></td>
             </tr>
             <tr>
