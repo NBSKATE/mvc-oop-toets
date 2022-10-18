@@ -1,23 +1,23 @@
 <h3><?= $data['title']; ?></h3>
 
-<form action="<?= URLROOT; ?>/countries/create" method="post">
+<form action="<?= URLROOT; ?>/richestpeoples/create" method="post">
     <table>
         <tbody>
             <tr>
-                <td>Land:</td>
+                <td>Persoon:</td>
                 <td><input type="text" name="name" id="name"></td>
             </tr>
             <tr>
-                <td>Hoofdstad:</td>
-                <td><input type="text" name="capitalCity" id="capitalCity"></td>
+                <td>Vermogen:</td>
+                <td><input type="text" name="networth" id="Networth"></td>
             </tr>
             <tr>
-                <td>Continent:</td>
-                <td><input type="text" name="continent" id="Continent"></td>
+                <td>Leeftijd:</td>
+                <td><input type="text" name="myAge" id="MyAge"></td>
             </tr>
             <tr>
-                <td>Population:</td>
-                <td><input type="text" name="population" id="Population"></td>
+                <td>Bedrijf:</td>
+                <td><input type="text" name="company" id="Company"></td>
             </tr>
             <tr>
                 <td><input type="submit" name="submit" id="submit" value="verstuur"></td>

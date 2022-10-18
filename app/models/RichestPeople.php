@@ -12,7 +12,7 @@ class RichestPeople
         $this->db = new Database();
     }
 
-    public function getPeople()
+    public function getPeoples()
     {
         $this->db->query('SELECT * FROM richestpeople');
         return $this->db->resultSet();
@@ -46,28 +46,28 @@ class RichestPeople
 
     public function deletePeople($id)
     {
-        $this->db->query("DELETE FROM country WHERE id = :id");
+        $this->db->query("DELETE FROM richestpeople WHERE id = :id");
         $this->db->bind(':id', $id, PDO::PARAM_INT);
         return $this->db->execute();
     }
 
-    public function createCountry($post)
+    public function createPeople($post)
     {
-        $this->db->query("INSERT INTO country (id, 
+        $this->db->query("INSERT INTO richestpeople (id, 
                                                Name, 
-                                               CapitalCity, 
-                                               Continent, 
-                                               Population)
+                                               Networth, 
+                                               MyAge, 
+                                               Company)
                           VALUES               (:id,
                                                 :name,
-                                                :capitalCity,
-                                                :continent,
-                                                :population)");
+                                                :networth,
+                                                :myage,
+                                                :company)");
         $this->db->bind(':id', NULL, PDO::PARAM_NULL);
         $this->db->bind(':name', $post['name'], PDO::PARAM_STR);
-        $this->db->bind(':capitalCity', $post['capitalCity'], PDO::PARAM_STR);
-        $this->db->bind(':continent', $post['continent'], PDO::PARAM_STR);
-        $this->db->bind(':population', $post['population'], PDO::PARAM_STR);
+        $this->db->bind(':networth', $post['networth'], PDO::PARAM_STR);
+        $this->db->bind(':myage', $post['myage'], PDO::PARAM_STR);
+        $this->db->bind(':company', $post['company'], PDO::PARAM_STR);
         return $this->db->execute();
     }
 }
